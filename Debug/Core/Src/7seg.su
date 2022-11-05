@@ -1,1 +1,5 @@
-7seg.c:13:6:display7SEG	16	static
+7seg.c:15:5:get_counter	4	static
+7seg.c:20:6:increment	8	static
+7seg.c:25:6:decrement	8	static
+7seg.c:30:6:reset_counter	8	static
+7seg.c:34:6:display7SEG	8	static

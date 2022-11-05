@@ -12,7 +12,7 @@
 
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
-#define KEY_TIMED_OUT 500
+#define KEY_TIMED_OUT 100
 extern int button_flag[BUTTON_COUNT];
 void getKeyInput();
 int isButtonPressed(int);

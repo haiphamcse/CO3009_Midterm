@@ -8,7 +8,12 @@
 #ifndef INC_7SEG_H_
 #define INC_7SEG_H_
 #include "main.h"
-void display7SEG(int);
+#include "global.h"
+void display7SEG();
 void update7SEG (int);
-
+void increment();
+void decrement();
+void reset_counter();
+int get_counter();
+extern int seg_counter;
 #endif /* INC_7SEG_H_ */

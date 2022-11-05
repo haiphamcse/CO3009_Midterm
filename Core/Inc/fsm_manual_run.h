@@ -14,5 +14,8 @@
 #include "7seg.h"
 
 void fsm_manual_run();
-
+void fsm_7seg();
+void fsm_button();
+void fsm_LED();
+void fsm_simple_buttons_run();
 #endif /* INC_FSM_MANUAL_RUN_H_ */
