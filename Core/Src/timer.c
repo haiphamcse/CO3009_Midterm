@@ -7,9 +7,6 @@
 
 
 #include"timer.h"
-#include "main.h"
-#include "global.h"
-
 int timer_counter[TIMER_COUNT] = {0};
 int timer_flag[TIMER_COUNT] = {0};
 
@@ -41,4 +38,5 @@ void timerRun()
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 	timerRun();
+	getKeyInput();
 }

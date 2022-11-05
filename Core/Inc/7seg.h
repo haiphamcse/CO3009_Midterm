@@ -7,7 +7,7 @@
 
 #ifndef INC_7SEG_H_
 #define INC_7SEG_H_
-
+#include "main.h"
 void display7SEG(int);
 void update7SEG (int);
 

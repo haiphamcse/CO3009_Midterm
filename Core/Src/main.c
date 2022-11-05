@@ -19,9 +19,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "global.h"
 #include "timer.h"
-//#include "7seg.h"
+#include "global.h"
+#include "button.h"
+#include "fsm_manual_run.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -92,8 +93,6 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
-  setTimer(100, 0);
-  setTimer(200, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,16 +100,11 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(timer_flag[0] == 1)
-	  {
-		  HAL_GPIO_TogglePin(GPIOA, SEG0_Pin);
-		  setTimer(100, 0);
-	  }
-	  if(timer_flag[1] == 1)
-	  {
-		  HAL_GPIO_TogglePin(GPIOA, SEG1_Pin);
-		  setTimer(200, 1);
-	  }
+	  fsm_manual_run();
+//	  if(isButtonPressed(0) == 1)
+//	  {
+//		  HAL_GPIO_TogglePin(GPIOA, OUT1_Pin);
+//	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -207,6 +201,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, OUT1_Pin|SEG0_Pin|SEG1_Pin|SEG2_Pin
@@ -220,6 +215,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : IN0_Pin IN1_Pin */
+  GPIO_InitStruct.Pin = IN0_Pin|IN1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 

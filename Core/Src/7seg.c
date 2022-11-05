@@ -6,7 +6,6 @@
  */
 
 #include "7seg.h"
-#include "main.h"
 /*
  * INSTRUCTION: NEED TO SET SEG0->SEG6 PIN
  * 				ALSO ASSUME THE LED IS ACTIVE LOW
