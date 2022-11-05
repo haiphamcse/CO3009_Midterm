@@ -94,8 +94,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
-  setAllTimer(100);
-  HAL_GPIO_WritePin(GPIOA, OUT2_Pin|OUT3_Pin|OUT4_Pin|OUT5_Pin, 1);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -103,8 +101,6 @@ int main(void)
     /* USER CODE END WHILE */
 	  fsm_LED();
 	  fsm_simple_buttons_run();
-//	  fsm_7seg();
-//	  display7SEG(seg_counter);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

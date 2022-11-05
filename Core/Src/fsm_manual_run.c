@@ -23,42 +23,15 @@ void fsm_LED()
 		HAL_GPIO_TogglePin(GPIOA, OUT5_Pin);
 		setTimer(timer_delay[0], 0);
 	}
-//	if(isButtonPressed(0) == 1)
-//	{
-//		HAL_GPIO_TogglePin(GPIOA, OUT2_Pin);
-//	}
-//	if(isButtonLongPressed(0) == 1)
-//	{
-//		HAL_GPIO_TogglePin(GPIOA, OUT3_Pin);
-//	}
-//	if(timer_flag[0] == 1)
-//	{
-//		increment();
-//		display7SEG();
-//		setTimer(100, 0);
-//	}
 }
 
 void fsm_simple_buttons_run(){
 	switch(status){
 	case INIT:
-		if(isButtonPressed(0) == 1)
-		{
-			reset_counter();
-			status = RS;
-		}
-		if(isButtonPressed(2) == 1)
-		{
-			decrement();
-			setTimer(500, 3);
-			status = DEC;
-		}
-		if(isButtonPressed(1) == 1)
-		{
-			increment();
-			setTimer(500, 3);
-			status = INC;
-		}
+		setTimer(100, 0);
+		HAL_GPIO_WritePin(GPIOA,OUT2_Pin|OUT3_Pin|OUT4_Pin|OUT5_Pin,1);
+		reset_counter();
+		status = RS;
 		break;
 	case RS:
 		HAL_GPIO_WritePin(GPIOA, OUT2_Pin, 0);
@@ -71,13 +44,13 @@ void fsm_simple_buttons_run(){
 		if(isButtonPressed(1) == 1)
 		{
 			increment();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = INC;
 		}
 		if(isButtonPressed(2) == 1)
 		{
 			decrement();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = DEC;
 		}
 		break;
@@ -86,6 +59,7 @@ void fsm_simple_buttons_run(){
 		{
 			increment();
 			setTimer(100, 1);
+			setTimer(duration_COUNTDOWN, 3);
 		}
 		if(isButtonPressed(0) == 1)
 		{
@@ -95,15 +69,16 @@ void fsm_simple_buttons_run(){
 		if(isButtonPressed(1) == 1)
 		{
 			increment();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = INC;
 		}
 		if(isButtonPressed(2) == 1)
 		{
 			decrement();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = DEC;
 		}
+		if(timer_flag[3] == 1){status = COUNTDOWN;}
 		break;
 	case INC:
 		HAL_GPIO_WritePin(GPIOA, OUT2_Pin, 1);
@@ -117,17 +92,17 @@ void fsm_simple_buttons_run(){
 		if(isButtonPressed(1) == 1)
 		{
 			increment();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 		}
 		if(isButtonLongPressed(1) == 1)
 		{
-			setTimer(300, 0);
+			setTimer(duration_LONGPRESS, 1);
 			status = INC_WAIT;
 		}
 		if(isButtonPressed(2) == 1)
 		{
 			decrement();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = DEC;
 		}
 		if(timer_flag[3] == 1){status = COUNTDOWN;}
@@ -137,6 +112,7 @@ void fsm_simple_buttons_run(){
 		{
 			decrement();
 			setTimer(100, 2);
+			setTimer(duration_COUNTDOWN, 3);
 		}
 		if(isButtonPressed(0) == 1)
 		{
@@ -153,6 +129,7 @@ void fsm_simple_buttons_run(){
 			decrement();
 			status = DEC;
 		}
+		if(timer_flag[3] == 1){status = COUNTDOWN;}
 		break;
 	case DEC:
 		HAL_GPIO_WritePin(GPIOA, OUT2_Pin, 1);
@@ -166,19 +143,18 @@ void fsm_simple_buttons_run(){
 		if(isButtonPressed(1) == 1)
 		{
 			increment();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 			status = INC;
 		}
 		if(isButtonLongPressed(2) == 1)
 		{
-			setTimer(300, 2);
-			setTimer(500, 3);
+			setTimer(duration_LONGPRESS, 2);
 			status = DEC_WAIT;
 		}
 		if(isButtonPressed(2) == 1)
 		{
 			decrement();
-			setTimer(500, 3);
+			setTimer(duration_COUNTDOWN, 3);
 		}
 		if(timer_flag[3] == 1){status = COUNTDOWN;}
 		break;

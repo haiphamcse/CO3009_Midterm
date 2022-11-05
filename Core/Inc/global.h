@@ -12,9 +12,6 @@
 #define BUTTON_COUNT 4
 
 #define INIT 0
-#define GREEN_MANUAL 1
-#define YELLOW_MANUAL 2
-#define RED_MANUAL 3
 
 #define RS 8
 #define INC 9
@@ -23,5 +20,9 @@
 #define INC_WAIT 18
 #define DEC_WAIT 19
 #define COUNTDOWN 20
+
 extern int status;
+
+#define duration_COUNTDOWN 1000
+#define duration_LONGPRESS 300
 #endif /* INC_GLOBAL_H_ */

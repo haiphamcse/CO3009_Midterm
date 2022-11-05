@@ -10,7 +10,6 @@
 #include "main.h"
 #include "global.h"
 void display7SEG();
-void update7SEG (int);
 void increment();
 void decrement();
 void reset_counter();
