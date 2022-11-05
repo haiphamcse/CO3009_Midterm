@@ -12,25 +12,30 @@
  * */
 int seg_counter = 0;
 
+//Get counter value
 int get_counter()
 {
 	return seg_counter;
 }
 
+//Increment counter value
 void increment(){seg_counter++;
 if(seg_counter == 10){seg_counter=0;}
 display7SEG();
 }
 
+//Decrement counter value
 void decrement(){seg_counter--;
 if(seg_counter < 0){seg_counter=9;}
 display7SEG();
 }
 
+//Reset counter value
 void reset_counter(){seg_counter = 0;
 display7SEG();
 }
 
+//Display 7seg
 void display7SEG()
 {
 	HAL_GPIO_WritePin(GPIOA, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin|SEG4_Pin|SEG5_Pin|SEG6_Pin, 1);

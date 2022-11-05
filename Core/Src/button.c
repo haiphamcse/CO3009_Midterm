@@ -13,7 +13,7 @@ int KeyReg2[BUTTON_COUNT] = {NORMAL_STATE};
 int KeyReg3[BUTTON_COUNT] = {NORMAL_STATE};
 int counter[BUTTON_COUNT] = {0};
 uint16_t button[] = {IN0_Pin, IN1_Pin, IN2_Pin, IN3_Pin};
-int TimeOutForKeyPress[BUTTON_COUNT] = {KEY_TIMED_OUT}; //What is this and how do we quantify this
+int TimeOutForKeyPress[BUTTON_COUNT] = {KEY_TIMED_OUT};
 int button_flag[BUTTON_COUNT] = {0}; //Init button flag to 0
 int button_long_flag[BUTTON_COUNT] = {0};
 

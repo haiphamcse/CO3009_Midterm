@@ -23,6 +23,6 @@
 
 extern int status;
 
-#define duration_COUNTDOWN 1000
-#define duration_LONGPRESS 300
+#define duration_COUNTDOWN 1000 //Duration to start counting down 7seg
+#define duration_LONGPRESS 300 //Duration to long pressed state
 #endif /* INC_GLOBAL_H_ */
