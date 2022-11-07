@@ -166,6 +166,23 @@ void fsm_simple_buttons_run(){
 			{status = RS;}
 			else{setTimer(100, 3);}
 		}
+		if(isButtonPressed(0) == 1)
+		{
+			reset_counter();
+			status = INC;
+		}
+		if(isButtonPressed(1) == 1)
+		{
+			increment();
+			setTimer(duration_COUNTDOWN, 3);
+			status = INC;
+		}
+		if(isButtonPressed(2) == 1)
+		{
+			decrement();
+			setTimer(duration_COUNTDOWN, 3);
+			status = DEC;
+		}
 		break;
 	}
 
